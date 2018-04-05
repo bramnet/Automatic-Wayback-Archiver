@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "Automatic Wayback Archiver",
+  "description": "This extension will automatically backup any webpages you're currently visiting into the wayback machine at web.archive.org",
+  "version": "0.3",
+
+  "browser_action": {
+   "default_icon": "icon.png",
+   "default_popup": "popup.html",
+	 "onCompleted": ["eventPage.js"]
+  },
+  "permissions": [
+   "activeTab",
+	  "webNavigation",
+	  "storage",
+	  "tabs",
+	  "http://*/",
+	  "https://*/"
+   ],
+  "content_scripts": [{
+  	"matches": ["<all_urls>"],
+	"js": ["eventPage.js"],
+	"run_at" : "document_end"
+  }]
+}
